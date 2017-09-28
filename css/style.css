@@ -1,0 +1,96 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  color: DarkSlateGrey;
+  background: white;
+}
+
+#topBanner {
+  position: fixed;
+  background: DarkSlateGrey;
+  opacity: .95;
+  width: 100%;
+  text-align: center;
+  padding: 0;
+}
+
+.bannerListItem {
+  list-style-type: none;
+  text-align: center;
+  font-size: 26px;
+  margin: 0px 0 0 0;
+  padding: 4px 0 7px 0;
+}
+
+.bannerLinks {
+  display: inline-block;
+  height: 50px;
+  width: 120px;
+  color: white;
+  text-decoration: none;
+}
+
+.bannerLinks:hover {
+  background: white;
+  color: DarkSlateGrey;
+  text-decoration: none;
+}
+
+#profilePic {
+  display: block;
+  border-radius: 10000px;
+  margin: 40px auto 0 auto;
+  width: 20%;
+  min-width: 170px;
+  max-width: 220px;
+}
+
+h1 {
+  text-align: center;
+  margin: 20px 0 5px 0;
+  font-size: 60px;
+}
+
+p#bio {
+  text-align: center;
+  width: 50%;
+  max-width: 600px;
+  min-width: 350px;
+  margin: 0 auto;
+}
+
+#portfolioSection {
+  text-align: center;
+}
+
+.portfolioItem {
+  display: inline-block;
+  min-width: 300px;
+  max-width: 450px;
+  width: 40%;
+  min-height: 180px;
+  max-height: 270px;
+  margin: 10px 20px;
+  border-radius: 30px;
+  box-shadow: 10px 10px 5px #888888;
+}
+
+#contactSection {
+  text-align: center;
+  margin: 0 0 20em 0;
+}
+
+.fa {
+  color: DarkSlateGrey;
+  width: 100px;
+  background: white;
+  font-size: 100px;
+  margin: 0 20px;
+}
+
+.fa:hover {
+  text-decoration: none;
+}
+
+br {
+  line-height: 50px;
+}

@@ -1,0 +1,47 @@
+var portfolioItems = [{href:"#", img:"https://images.pexels.com/photos/464317/pexels-photo-464317.jpeg?w=940&h=650&auto=compress&cs=tinysrgb"}, {href:"#", img:"https://images.pexels.com/photos/464317/pexels-photo-464317.jpeg?w=940&h=650&auto=compress&cs=tinysrgb"}, {href:"#", img:"https://images.pexels.com/photos/464317/pexels-photo-464317.jpeg?w=940&h=650&auto=compress&cs=tinysrgb"}, {href:"#", img:"https://images.pexels.com/photos/464317/pexels-photo-464317.jpeg?w=940&h=650&auto=compress&cs=tinysrgb"}, {href:"#", img:"https://images.pexels.com/photos/464317/pexels-photo-464317.jpeg?w=940&h=650&auto=compress&cs=tinysrgb"}, {href:"#", img:"https://images.pexels.com/photos/464317/pexels-photo-464317.jpeg?w=940&h=650&auto=compress&cs=tinysrgb"}, {href:"#", img:"https://images.pexels.com/photos/464317/pexels-photo-464317.jpeg?w=940&h=650&auto=compress&cs=tinysrgb"}, {href:"#", img:"https://images.pexels.com/photos/464317/pexels-photo-464317.jpeg?w=940&h=650&auto=compress&cs=tinysrgb"}];
+
+$(document).ready(function() {
+  
+  $("#home").click(function() {
+    $('html, body').animate({
+      scrollTop: 0
+    }, 500);
+  });
+  
+  $("#portfolio").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#forScrolling").offset().top
+    }, 500);
+  });
+  
+  $("#contact").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#forScrolling2").offset().top
+    }, 500);
+  });
+  
+  renderPortfolio(portfolioItems);
+});
+
+
+
+function renderPortfolio(items) {
+  class Portfolio extends React.Component {
+    render() {
+      const portItemList = items.map(function(project, i) {
+        return (
+          <a href={project.href}>
+            <img className="portfolioItem" src={project.img} />
+          </a>
+        );
+      });
+
+      return <div>{portItemList}</div>;
+    }
+  }
+  
+  ReactDOM.render(
+    <Portfolio />,
+    document.getElementById('projects')
+  );
+}

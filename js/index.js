@@ -45,7 +45,7 @@ function renderPortfolio(items) {
       var portItemList = items.map(function (project, i) {
         return React.createElement(
           "a",
-          { href: project.href },
+          { href: project.href, target: "_blank" },
           React.createElement("img", { className: "portfolioItem", src: project.img })
         );
       });

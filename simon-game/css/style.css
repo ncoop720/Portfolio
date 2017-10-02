@@ -1,0 +1,71 @@
+body {
+  background: lightgrey;
+}
+
+button:focus {
+  outline: 0;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+#count {
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+  width: 40px;
+  text-align: center;
+  background: black;
+  color: red;
+  margin-left: auto;
+}
+
+#regular {
+  margin: 0 10px;
+}
+
+#strict {
+  margin-right: auto;
+}
+
+.middleButtons {
+  text-align: center;
+  width: 100px;
+  border-style: solid;
+  border-color: black;
+  background: white;
+  border-width: 2px;
+}
+
+#instructions {
+  margin: auto;
+}
+
+#green {
+  margin-left: auto;
+  background: green;
+}
+
+#red {
+  margin-right: auto;
+  background: red;
+}
+
+#yellow {
+  margin-left: auto;
+  background: yellow;
+}
+
+#blue {
+  margin-right: auto;
+  background: blue;
+}
+
+.playButton {
+  border-style: none;
+  height: 150px;
+  width: 150px;
+  margin: 5px 10px;
+  border-radius: 15px;
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Wikipedia Viewer</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+  <h1 id="heading">Wikipedia Viewer</h1>
+<p id="random1"><a id="random2" href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">Click here for a random Wikipedia article</a></p>
+<div id="search">
+  <input type="text" id="searchTerm" name="search" placeholder="Search for a Wikipedia article here" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search for a Wikipedia article here'">
+  <button type="button" id="searchButton" class="btn btn-primary">Search</button>
+</div>
+<br />
+<div class = "outputStuff">
+  <ul id="output"></ul>
+</div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js'></script>
+
+    <script  src="js/index.js"></script>
+
+</body>
+</html>

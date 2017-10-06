@@ -4,6 +4,68 @@ body {
   background: white;
 }
 
+#nav {
+  position: fixed;
+  z-index: 50;
+  width: 150px;
+  height: 100%;
+  background: DarkSlateGrey;
+  color: white;
+  padding: 50px 0 0 0;
+}
+
+.navListItem {
+  padding: 5px 0;
+  width: 100%;
+  list-style-type: none;
+  margin: 0;
+  text-align: center;
+  color: white;
+}
+
+.navListItem:hover {
+  color: DarkSlateGrey;
+  background: white;
+}
+
+.navLinks:hover {
+  text-decoration: none;
+}
+
+@media screen and (max-width: 768px) {
+  #menu {
+    z-index: 51;
+    width: 10%;
+    display: block;
+    background: white;
+    color: DarkSlateGrey;
+    font-size: 30px;
+    text-align: center;
+    position: fixed;
+    border-style: none;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  #nav {
+    display: none;
+  }
+  
+  #topBanner {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #menu {
+    display: none;
+  }
+  
+  #nav {
+    display: none;
+  }
+}
+
 #topBanner {
   position: fixed;
   background: DarkSlateGrey;
@@ -11,6 +73,7 @@ body {
   width: 100%;
   text-align: center;
   padding: 0;
+  z-index: 50;
 }
 
 .bannerListItem {
@@ -35,6 +98,10 @@ body {
   text-decoration: none;
 }
 
+.clearDisplay {
+  display: none;
+}
+
 #profilePic {
   display: block;
   border-radius: 10000px;
@@ -46,37 +113,47 @@ body {
 
 h1 {
   text-align: center;
-  margin: 20px 0 5px 0;
+  margin: 20px auto 5px auto;
   font-size: 60px;
+  width: 80%;
 }
 
 p#bio {
   text-align: center;
-  width: 50%;
+  width: 80%;
   max-width: 600px;
-  min-width: 350px;
   margin: 0 auto;
 }
 
 #portfolioSection {
   text-align: center;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .portfolioItem {
   display: inline-block;
+  position: relative;
   min-width: 300px;
   max-width: 450px;
   width: 40%;
-  min-height: 180px;
-  max-height: 270px;
   margin: 10px 20px;
   border-radius: 30px;
   box-shadow: 10px 10px 5px #888888;
 }
 
+.portfolioImg {
+  min-height: 180px;
+  max-height: 270px;
+  border-radius: 30px;
+  display: block;
+  width: 100%;
+}
+
 #contactSection {
   text-align: center;
-  margin: 0 0 20em 0;
+  width: 80%;
+  margin: 0 auto 20em auto;
 }
 
 .fa {
@@ -94,3 +171,27 @@ p#bio {
 br {
   line-height: 50px;
 }
+
+.overlay {
+  border-radius: 30px;
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  color: white;
+}
+
+.overlay:hover {
+  opacity: .8;
+  background: DarkSlateGrey;
+}
+
+.overlayText {
+  font-size: 24px;
+  margin: 30px 10% 0 10%;
+  width: 80%;
+}
+

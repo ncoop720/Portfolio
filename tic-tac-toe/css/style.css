@@ -1,0 +1,119 @@
+body {
+  text-align: center;
+  background: lightblue;
+}
+
+button:hover {
+  cursor: pointer;
+  outline: none;
+}
+
+button:focus {
+  outline: none;
+}
+
+#settings {
+  margin: 20px 0 20px 0;
+}
+
+#xoButtons {
+  display: inline-block;
+}
+
+#reset {
+  margin: 0 0 0 50px;
+  display: inline-block;
+}
+
+#gameBoard {
+  border-radius: 30px;
+  border-style: solid;
+  margin: 0 auto;
+  padding: 5px 0;
+  width: 270px;
+  background: BurlyWood;
+  box-shadow: 10px 10px 10px #888888;
+}
+
+.boardRow {
+  margin: 5px 0;
+  padding: 0;
+}
+
+.gameSpace {
+  display: inline-block;
+  text-align: center;
+  border-style: none;
+  border-color: black;
+  background: inherit;
+  vertical-align: top;
+  width: 80px;
+  height: 80px;
+  margin: 0 2.5px;
+  padding: 0;
+}
+
+#space1 {
+  border-right-style: solid;
+  border-bottom-style: solid;
+}
+
+#space2 {
+  border-left-style: solid;
+  border-right-style: solid;
+  border-bottom-style:solid;
+}
+
+#space3 {
+  border-left-style: solid;
+  border-bottom-style: solid;
+}
+
+#space4 {
+  border-top-style: solid;
+  border-bottom-style: solid;
+  border-right-style: solid;
+}
+
+#space5 {
+  border-left-style: solid;
+  border-right-style: solid;
+  border-top-style: solid;
+  border-bottom-style: solid;
+}
+
+#space6 {
+  border-left-style: solid;
+  border-top-style: solid;
+  border-bottom-style: solid;
+}
+
+#space7 {
+  border-right-style: solid;
+  border-top-style: solid;
+}
+
+#space8 {
+  border-right-style: solid;
+  border-left-style: solid;
+  border-top-style: solid;
+}
+
+#space9 {
+  border-left-style: solid;
+  border-top-style: solid;
+}
+
+.buttonStyle {
+  background: BurlyWood;
+  border-style: solid;
+  border-color: black;
+}
+
+.noticeMe {
+  background: GreenYellow;
+}
+
+.selected {
+  background: DarkTurquoise;
+}

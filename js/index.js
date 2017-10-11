@@ -19,9 +19,9 @@ var portfolioItems = [{
   img: "wikipedia-viewer/wv_pic.png",
   text: "Wikipedia Viewer"
 }, {
-  href: "#",
-  img: "https://images.pexels.com/photos/464317/pexels-photo-464317.jpeg?w=940&h=650&auto=compress&cs=tinysrgb",
-  text: "Placeholder"
+  href: "tic-tac-toe/index.html",
+  img: "tic-tac-toe/ttt_pic.png",
+  text: "Tic-Tac-Toe"
 }, {
   href: "#",
   img: "https://images.pexels.com/photos/464317/pexels-photo-464317.jpeg?w=940&h=650&auto=compress&cs=tinysrgb",

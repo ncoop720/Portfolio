@@ -23,13 +23,9 @@ var portfolioItems = [{
   img: "tic-tac-toe/ttt_pic.png",
   text: "Tic-Tac-Toe"
 }, {
-  href: "#",
-  img: "https://images.pexels.com/photos/464317/pexels-photo-464317.jpeg?w=940&h=650&auto=compress&cs=tinysrgb",
-  text: "Placeholder"
-}, {
-  href: "#",
-  img: "https://images.pexels.com/photos/464317/pexels-photo-464317.jpeg?w=940&h=650&auto=compress&cs=tinysrgb",
-  text: "Placeholder"
+  href: "sudoku-solver/index.html",
+  img: "sudoku-solver/ss_pic.png",
+  text: "Sudoku Solver"
 }];
 
 $(document).ready(function () {

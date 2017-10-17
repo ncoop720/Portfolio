@@ -17,7 +17,7 @@ $(document).ready(function () {
   $("#xButton").addClass("selected");
 });
 
-//renders the board from an array
+// renders the board from an array
 function renderBoard(arr) {
   var Board = function (_React$Component) {
     _inherits(Board, _React$Component);
@@ -116,18 +116,18 @@ function renderBoard(arr) {
   ReactDOM.render(React.createElement(Board, null), document.getElementById("boardDestination"));
 }
 
-//prints a message depending on who goes first
+// prints a message depending on who goes first
 
-var First = function (_React$Component2) {
-  _inherits(First, _React$Component2);
+var Textbox = function (_React$Component2) {
+  _inherits(Textbox, _React$Component2);
 
-  function First() {
-    _classCallCheck(this, First);
+  function Textbox() {
+    _classCallCheck(this, Textbox);
 
     return _possibleConstructorReturn(this, _React$Component2.apply(this, arguments));
   }
 
-  First.prototype.render = function render() {
+  Textbox.prototype.render = function render() {
     return React.createElement(
       "p",
       null,
@@ -135,61 +135,72 @@ var First = function (_React$Component2) {
     );
   };
 
-  return First;
+  return Textbox;
 }(React.Component);
 
-//randomly chooses who goes first
+// randomly chooses who goes first
 
 function whoGoesFirst() {
   if (Math.random() < 0.5) {
     myTurn = true;
-    ReactDOM.render(React.createElement(First, { message: "You go first!" }), document.getElementById("whoGoesFirst"));
+    ReactDOM.render(React.createElement(Textbox, { message: "You go first!" }), document.getElementById("textBox"));
   } else {
     myTurn = false;
     computerSpace();
-    ReactDOM.render(React.createElement(First, { message: "Computer goes first!" }), document.getElementById("whoGoesFirst"));
+    ReactDOM.render(React.createElement(Textbox, { message: "Computer goes first!" }), document.getElementById("textBox"));
   }
 }
 
-//click function for the game board
+// click function for the game board
 function userSpace(clickedID) {
   if (myTurn) {
-    //place mySelector if space is empty
+    // place mySelector if space is empty
     for (var i = 0; i < gameStateID.length; i++) {
       if (gameStateID[i] == clickedID && gameState[i] == "") {
         myTurn = false;
         gameState[i] = mySelector;
         renderBoard(gameState);
 
-        //if you win
+        // if you win
         if (gameState[0] !== "" && gameState[0] == gameState[1] && gameState[0] == gameState[2] || gameState[3] !== "" && gameState[3] == gameState[4] && gameState[3] == gameState[5] || gameState[6] !== "" && gameState[6] == gameState[7] && gameState[6] == gameState[8] || gameState[0] !== "" && gameState[0] == gameState[3] && gameState[0] == gameState[6] || gameState[1] !== "" && gameState[1] == gameState[4] && gameState[1] == gameState[7] || gameState[2] !== "" && gameState[2] == gameState[5] && gameState[2] == gameState[8] || gameState[0] !== "" && gameState[0] == gameState[4] && gameState[0] == gameState[8] || gameState[2] !== "" && gameState[2] == gameState[4] && gameState[2] == gameState[6]) {
           $("#reset").addClass("noticeMe");
+          ReactDOM.render(React.createElement(Textbox, { message: "You win!" }), document.getElementById("textBox"));
           return;
         }
 
-        //count number of occupied spaces
+        // count number of occupied spaces
         var j = 0;
         for (var i = 0; i < gameState.length; i++) {
           if (gameState[i] !== "") {
             j++;
           }
         }
-        //if all spaces occupied, light up reset button
+        // if all spaces occupied, light up reset button
         if (j == 9) {
+          computerText("draw");
           $("#reset").addClass("noticeMe");
           return;
         }
 
-        //computer's turn
+        // computer's turn
         computerSpace();
       }
     }
   }
 }
 
-//computer AI
+// text to display when computer wins
+function computerText(status) {
+  if (status == "win") {
+    ReactDOM.render(React.createElement(Textbox, { message: "Computer Wins!" }), document.getElementById("textBox"));
+  } else if (status == "draw") {
+    ReactDOM.render(React.createElement(Textbox, { message: "Cat's Game!" }), document.getElementById("textBox"));
+  }
+}
+
+// computer AI
 function computerSpace() {
-  //count number of occupied spaces
+  // count number of occupied spaces
   var j = 0;
   for (var i = 0; i < gameState.length; i++) {
     if (gameState[i] !== "") {
@@ -197,16 +208,18 @@ function computerSpace() {
     }
   }
 
-  //if total occupied spaces equals 1 less than max, light up reset button
+  // if total occupied spaces equals 1 less than max, light up reset button
   if (j == 8) {
+    setTimeout('computerText("draw")', 500);
     setTimeout('$("#reset").addClass("noticeMe")', 500);
   }
 
-  //check for winning play
+  // check for winning play
   for (var i = 0; i < gameState.length; i++) {
     if (gameState[i] == "") {
       gameState[i] = compSelector;
       if (gameState[0] !== "" && gameState[0] == gameState[1] && gameState[0] == gameState[2] || gameState[3] !== "" && gameState[3] == gameState[4] && gameState[3] == gameState[5] || gameState[6] !== "" && gameState[6] == gameState[7] && gameState[6] == gameState[8] || gameState[0] !== "" && gameState[0] == gameState[3] && gameState[0] == gameState[6] || gameState[1] !== "" && gameState[1] == gameState[4] && gameState[1] == gameState[7] || gameState[2] !== "" && gameState[2] == gameState[5] && gameState[2] == gameState[8] || gameState[0] !== "" && gameState[0] == gameState[4] && gameState[0] == gameState[8] || gameState[2] !== "" && gameState[2] == gameState[4] && gameState[2] == gameState[6]) {
+        setTimeout("computerText('win')", 500);
         setTimeout("renderBoard(gameState)", 500);
         setTimeout('$("#reset").addClass("noticeMe")', 500);
         return;
@@ -216,7 +229,7 @@ function computerSpace() {
     }
   }
 
-  //stop opponent's winning play
+  // stop opponent's winning play
   for (var i = 0; i < gameState.length; i++) {
     if (gameState[i] == "") {
       gameState[i] = mySelector;
@@ -231,7 +244,7 @@ function computerSpace() {
     }
   }
 
-  //go middle if opponent went first
+  // go middle if opponent went first
   if (j == 1 && gameState[4] == "") {
     gameState[4] = compSelector;
     setTimeout("renderBoard(gameState)", 500);
@@ -239,7 +252,7 @@ function computerSpace() {
     return;
   }
 
-  //place side if opponent holds two opposite corners
+  // place side if opponent holds two opposite corners
   var side = [1, 3, 5, 7];
   if (gameState[0] == mySelector && gameState[8] == mySelector || gameState[2] == mySelector && gameState[6] == mySelector) {
     for (var i = 0; i < side.length; i++) {
@@ -252,7 +265,7 @@ function computerSpace() {
     }
   }
 
-  //place opposite of owned corner
+  // place opposite of owned corner
   if (gameState[0] == "" && gameState[8] == compSelector) {
     gameState[0] = compSelector;
     setTimeout("renderBoard(gameState)", 500);
@@ -278,7 +291,7 @@ function computerSpace() {
     return;
   }
 
-  //place side if number of occupied spaces >=5
+  // place side if number of occupied spaces >=5
   for (var i = 0; i < side.length; i++) {
     if (gameState[side[i]] == "" && j >= 5) {
       gameState[side[i]] = compSelector;
@@ -288,7 +301,7 @@ function computerSpace() {
     }
   }
 
-  //place corner
+  // place corner
   var corner = [0, 2, 6, 8];
   for (var i = 0; i < corner.length; i++) {
     if (gameState[corner[i]] == "") {
@@ -299,7 +312,7 @@ function computerSpace() {
     }
   }
 
-  //place middle
+  // place middle
   if (gameState[4] == "") {
     gameState[4] = compSelector;
     setTimeout("renderBoard(gameState)", 500);
@@ -307,7 +320,7 @@ function computerSpace() {
     return;
   }
 
-  //place side
+  // place side
   for (var i = 0; i < side.length; i++) {
     if (gameState[side[i]] == "") {
       gameState[side[i]] = compSelector;
@@ -318,7 +331,7 @@ function computerSpace() {
   }
 }
 
-//clears board and starts new game
+// clears board and starts new game
 function resetGame() {
   gameState = ["", "", "", "", "", "", "", "", ""];
   $("#reset").removeClass("noticeMe");
@@ -326,7 +339,7 @@ function resetGame() {
   whoGoesFirst();
 }
 
-//when you press the x button
+// when you press the x button
 function xButton() {
   $("#oButton").removeClass("selected");
   $("#xButton").addClass("selected");
@@ -335,7 +348,7 @@ function xButton() {
   resetGame();
 }
 
-//when you press the o button
+// when you press the o button
 function oButton() {
   $("#xButton").removeClass("selected");
   $("#oButton").addClass("selected");

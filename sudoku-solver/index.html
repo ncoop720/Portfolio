@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Sudoku Solver</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+  <h1>Sudoku Solver</h1>
+<button onclick="solution()">Solution</button>
+<button onclick="clearAll()">Clear All</button>
+<form id="sudokuBoard">
+  <div class="rows" id="rowA"><!--
+    --><input class="space" id="a1" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="a2" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space right" id="a3" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="a4" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="a5" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space right" id="a6" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="a7" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="a8" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="a9" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" />
+  </div>
+  <div class="rows" id="rowB"><!--
+    --><input class="space" id="b1" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="b2" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space right" id="b3" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="b4" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="b5" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space right" id="b6" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="b7" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="b8" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="b9" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" />
+  </div>
+  <div class="rows bottom" id="rowC"><!--
+    --><input class="space" id="c1" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="c2" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space right" id="c3" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="c4" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="c5" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space right" id="c6" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="c7" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="c8" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="c9" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" />
+  </div>
+  <div class="rows" id="rowD"><!--
+    --><input class="space" id="d1" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="d2" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space right" id="d3" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="d4" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="d5" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space right" id="d6" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="d7" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="d8" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="d9" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" />
+  </div>
+  <div class="rows" id="rowE"><!--
+    --><input class="space" id="e1" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="e2" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space right" id="e3" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="e4" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="e5" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space right" id="e6" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="e7" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="e8" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="e9" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" />
+  </div>
+   <div class="rows bottom" id="rowF"><!--
+    --><input class="space" id="f1" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="f2" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space right" id="f3" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="f4" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="f5" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space right" id="f6" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="f7" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="f8" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="f9" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" />
+  </div>
+  <div class="rows" id="rowG"><!--
+    --><input class="space" id="g1" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="g2" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space right" id="g3" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="g4" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="g5" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space right" id="g6" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="g7" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="g8" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="g9" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" />
+  </div>
+  <div class="rows" id="rowH"><!--
+    --><input class="space" id="h1" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="h2" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space right" id="h3" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="h4" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="h5" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space right" id="h6" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="h7" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="h8" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="h9" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" />
+  </div>
+  <div class="rows" id="rowI"><!--
+    --><input class="space" id="i1" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="i2" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space right" id="i3" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="i4" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="i5" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space right" id="i6" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="i7" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="i8" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" /><!--
+    --><input class="space" id="i9" type="text" maxlength="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" />
+  </div>
+</form>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+
+    <script  src="js/index.js"></script>
+
+</body>
+</html>

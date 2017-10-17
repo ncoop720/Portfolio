@@ -1,0 +1,41 @@
+body {
+  text-align: center;
+  color: white;
+  background: black;
+}
+
+button {
+  background: white;
+  border-color: black;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+#sudokuBoard {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.rows {
+  margin: 1px 0;
+}
+
+.space {
+  height: 40px;
+  width: 40px;
+  margin: 0 0.5px;
+  padding: 0;
+  border-style: solid;
+  border-width: thin;
+  text-align: center;
+}
+
+.right {
+  margin-right: 7px;
+}
+
+.bottom {
+  margin-bottom: 7px;
+}

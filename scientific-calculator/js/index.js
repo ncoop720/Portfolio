@@ -200,10 +200,10 @@ function rightParAddable(arr) {
   if (arr[arr.length-1]!==")" 
       && isNaN(arr[0]) 
       && arr[0]!=="ans"
-      && arr[0].charAt(0)!=="f"
       && arr[0]!=="Math.E"
       && arr[0]!=="Math.PI"
-      && arr[0].constructor!==Array 
+      && arr[0].constructor!==Array
+      && arr[0].charAt(0)!=="f"
       && arr[0]!=="." 
       && (!isNaN(arr[arr.length-1])
           || arr[arr.length-1]=="Math.E"
